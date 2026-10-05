@@ -1,0 +1,42 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE & Editor files
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.metadata/
+*.sublime-project
+*.sublime-workspace
+.vscode/
+
+# OS generated
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Uploaded student submissions and assignment resources
+uploads/submissions/*
+uploads/assignments/*
+!uploads/submissions/.gitkeep
+!uploads/assignments/.gitkeep
+
+# Sensitive config
+src/main/resources/db.properties
