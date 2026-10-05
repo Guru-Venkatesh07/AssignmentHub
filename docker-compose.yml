@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  database:
+    image: mysql:8.0
+    container_name: assignment_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: assignment_manager
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/02_seed.sql
+      - db_data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: assignment_app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      DB_HOST: database
+      DB_PORT: 3306
+      DB_NAME: assignment_manager
+      DB_USER: root
+      DB_PASSWORD: root
+    depends_on:
+      - database
+
+volumes:
+  db_data:
